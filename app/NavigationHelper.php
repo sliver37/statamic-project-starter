@@ -2,15 +2,8 @@
 
 namespace App;
 
-use Illuminate\Support\Str;
-use Statamic\Facades\Entry;
 use Statamic\Facades\Nav as NavigationRepository;
-use Statamic\Facades\Site;
-use Statamic\Modifiers\Modify;
-use Statamic\Structures\Nav as StatamicNav;
-use Statamic\Structures\NavTree;
-use Statamic\Tags\Loader as TagLoader;
-use Statamic\View\Antlers\Parser;
+use Statamic\Structures\Nav;
 
 class NavigationHelper
 {
@@ -35,7 +28,7 @@ class NavigationHelper
         return new static($navigation);
     }
 
-    public function __construct(StatamicNav $navigation)
+    public function __construct(Nav $navigation)
     {
         $this->navigation = $navigation;
     }
