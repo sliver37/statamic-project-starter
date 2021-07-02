@@ -21,7 +21,6 @@ class StatamicAuthTables extends Migration
             $table->timestamp('last_login')->nullable();
 
             // Update existing columns
-            $table->string('id')->change();
             $table->string('password')->nullable()->change();
         });
 
