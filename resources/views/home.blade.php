@@ -21,5 +21,7 @@
             <a class="hover:bg-gray-200 p-2 rounded" href="https://statamic.dev" target="_blank" rel="noopener noreferrer">Documentation</a>
             <a class="hover:bg-gray-200 p-2 rounded" href="https://statamic.com/support" rel="noopener noreferrer">Get Support</a>
         </div>
+
+        {{-- {!! App\Navigation::findByHandle('header_nav')->render() !!} --}}
     </div>
 @endsection
