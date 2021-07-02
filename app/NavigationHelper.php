@@ -12,7 +12,7 @@ use Statamic\Structures\NavTree;
 use Statamic\Tags\Loader as TagLoader;
 use Statamic\View\Antlers\Parser;
 
-class Navigation
+class NavigationHelper
 {
     protected $navigation;
 
@@ -48,12 +48,7 @@ class Navigation
     public function render($navigation = null)
     {
         if (is_null($navigation)) {
-            $navigation = app(TagLoader::class)->load('nav', [
-                'parser'     => app(Parser::class),
-                'params'     => ['handle' => $this->navigation->handle()],
-                'content'    => null,
-                'context'    => null,
-            ])->index();
+            $navigation = tag('nav', ['handle'=> $this->navigation->handle()]);
         }
 
         return view('navigation.navigation', ['navigationHelper' => $this, 'navigation' => $navigation]);
