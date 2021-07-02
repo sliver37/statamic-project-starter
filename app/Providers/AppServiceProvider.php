@@ -26,8 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Defer Telescope if cache table does not exist.
-        if (Schema::hasTable('cache')) {
+        if (config('telescope.enabled') && Schema::hasTable('cache')) {
+            if (! Schema::hasTable('telescope_entries')) {
+                Artisan::call('migrate', [
+                    '--force' => true,
+                    '--path' => '/vendor/laravel/telescope/database/migrations/2018_08_08_100000_create_telescope_entries_table.php',
+                ]);
+            }
+
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
