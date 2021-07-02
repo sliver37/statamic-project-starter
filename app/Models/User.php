@@ -6,9 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Statamic\Auth\Eloquent\User as StatamicUser;
 
 class User extends Authenticatable
 {
+    // Laravel
     use HasFactory, Notifiable;
 
     /**
@@ -38,6 +40,20 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        // Statamic
+        'super' => 'integer',
+        'last_login' => 'datetime',
+        // Laravel
         'email_verified_at' => 'datetime',
     ];
+
+    public static function findByEmail(string $email)
+    {
+        return static::where('email', $email)->first();
+    }
+
+    public function toStatamicUser()
+    {
+        return StatamicUser::fromModel($this);
+    }
 }
