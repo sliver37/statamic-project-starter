@@ -26,6 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->bootTelescope();
+
+        // Statamic::script('app', 'cp');
+        // Statamic::style('app', 'cp');
+    }
+
+    protected function bootTelescope()
+    {
         if (config('telescope.enabled') && Schema::hasTable('cache')) {
             if (! Schema::hasTable('telescope_entries')) {
                 Artisan::call('migrate', [
@@ -37,8 +45,5 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
-
-        // Statamic::script('app', 'cp');
-        // Statamic::style('app', 'cp');
     }
 }
