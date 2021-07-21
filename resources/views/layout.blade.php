@@ -11,6 +11,6 @@
         <div class="mx-auto px-2 h-screen flex items-center justify-center">
             @yield('template_content')
         </div>
-        <script src="{{ mix('/js/site.js') }}"></script>
+        <script src="{{ mix('js/site.js') }}"></script>
     </body>
 </html>
