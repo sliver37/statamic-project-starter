@@ -66,8 +66,3 @@ services:
 networks:
     sail:
         driver: bridge
-volumes:
-    sailmariadb:
-        driver: local
-    sailredis:
-        driver: local
