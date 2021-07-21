@@ -23,7 +23,7 @@ services:
             - redis
             - blackfire
     mariadb:
-        image: 'mariadb:10'
+        image: 'mariadb:10.6'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
