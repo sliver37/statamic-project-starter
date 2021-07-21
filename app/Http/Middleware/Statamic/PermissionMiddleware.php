@@ -4,31 +4,12 @@ namespace App\Http\Middleware\Statamic;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authorize;
-use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Statamic\Exceptions\AuthenticationException;
 use Statamic\Exceptions\AuthorizationException;
 
 class PermissionMiddleware extends Authorize
 {
-    /**
-     * The gate instance.
-     *
-     * @var \Illuminate\Contracts\Auth\Access\Gate
-     */
-    protected $gate;
-
-    /**
-     * Create a new middleware instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
-     * @return void
-     */
-    public function __construct(Gate $gate)
-    {
-        $this->gate = $gate;
-    }
-
     /**
      * Handle an incoming request.
      *
