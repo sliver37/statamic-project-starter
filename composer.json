@@ -12,7 +12,7 @@
         "laravel/framework": "^8.0",
         "laravel/telescope": "^4.5",
         "laravel/tinker": "^2.0",
-        "statamic/cms": "3.1.*"
+        "statamic/cms": "^3.1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -61,7 +61,6 @@
             "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
         ],
         "post-update-cmd": [
-            "@php artisan telescope:publish --ansi"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
