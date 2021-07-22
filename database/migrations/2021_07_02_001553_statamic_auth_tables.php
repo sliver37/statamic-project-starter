@@ -26,14 +26,18 @@ class StatamicAuthTables extends Migration
 
         Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id')->index();
-            $table->string('role_id')->index();
+            $table->string('user_id');
+            $table->string('role_id');
+
+            $table->index(['user_id', 'role_id']);
         });
 
         Schema::create('group_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id')->index();
-            $table->string('group_id')->index();
+            $table->string('user_id');
+            $table->string('group_id');
+
+            $table->index(['user_id', 'group_id']);
         });
     }
 
