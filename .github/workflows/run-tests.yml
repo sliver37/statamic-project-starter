@@ -1,0 +1,43 @@
+name: Run Tests
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  php-tests:
+    runs-on: ${{ matrix.os }}
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+
+    strategy:
+      matrix:
+        php: [8.0]
+        laravel: [8.*]
+        statamic: [3.1.*]
+        dependency-version: [prefer-lowest, prefer-stable]
+        os: [ubuntu-20.04]
+        include:
+          - laravel: 8.*
+            testbench: 6.*
+
+    name: P${{ matrix.php }} - S${{ matrix.statamic }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
+
+      - name: Install dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "statamic/cms:${{ matrix.statamic }}" "orchestra/testbench:${{ matrix.testbench }}" ${{ matrix.additional-deps }} --no-interaction --no-update
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+      - name: Execute tests
+        run: vendor/bin/phpunit
