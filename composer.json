@@ -63,6 +63,8 @@
             "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
         ],
         "post-update-cmd": [
+            "@php artisan horizon:publish --ansi",
+            "@php artisan telescope:publish --ansi"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
