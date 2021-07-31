@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9154f622986d78039ea2f8b532138089",
+    "content-hash": "84f55e5010b97277ccebdb810ba237b3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -117,6 +117,54 @@
                 }
             ],
             "time": "2021-01-20T22:51:39+00:00"
+        },
+        {
+            "name": "cloudflare/sdk",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cloudflare/cloudflare-php.git",
+                "reference": "d97cf24ee2fcb2218cc8cce427f0c21f32c886fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cloudflare/cloudflare-php/zipball/d97cf24ee2fcb2218cc8cce427f0c21f32c886fd",
+                "reference": "d97cf24ee2fcb2218cc8cce427f0c21f32c886fd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0.1",
+                "php": ">=7.2.5",
+                "psr/http-message": "~1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.6",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cloudflare\\API\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Junade Ali",
+                    "email": "junade@cloudflare.com"
+                }
+            ],
+            "description": "PHP binding for v4 of the Cloudflare Client API.",
+            "support": {
+                "issues": "https://github.com/cloudflare/cloudflare-php/issues",
+                "source": "https://github.com/cloudflare/cloudflare-php/tree/1.2.0"
+            },
+            "time": "2021-06-23T00:17:15+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -2047,6 +2095,62 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "handmadeweb/statamic-cloudflare",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HandmadeWeb/statamic-cloudflare.git",
+                "reference": "a71770d3e9e9857ed476fd44a03986ed77598f5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HandmadeWeb/statamic-cloudflare/zipball/a71770d3e9e9857ed476fd44a03986ed77598f5c",
+                "reference": "a71770d3e9e9857ed476fd44a03986ed77598f5c",
+                "shasum": ""
+            },
+            "require": {
+                "cloudflare/sdk": "^1.2",
+                "php": "^7.3 || ^8.0",
+                "statamic/cms": "^3.1.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "Statamic Cloudflare",
+                    "description": "Statamic Cloudflare addon"
+                },
+                "laravel": {
+                    "providers": [
+                        "HandmadeWeb\\StatamicCloudflare\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HandmadeWeb\\StatamicCloudflare\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "cloudflare",
+                "statamic",
+                "statamic-addon",
+                "statamic-cache",
+                "statamic-plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/HandmadeWeb/statamic-cloudflare/issues",
+                "source": "https://github.com/HandmadeWeb/statamic-cloudflare/tree/1.0.3"
+            },
+            "time": "2021-07-30T05:56:56+00:00"
         },
         {
             "name": "intervention/image",
