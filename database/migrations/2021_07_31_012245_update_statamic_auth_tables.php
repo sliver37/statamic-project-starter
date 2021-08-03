@@ -20,11 +20,13 @@ class UpdateStatamicAuthTables extends Migration
         });
 
         Schema::table('role_user', function (Blueprint $table) {
-            $table->index(['user_id', 'role_id']);
+            $table->index('user_id');
+            $table->index('role_id');
         });
 
         Schema::table('group_user', function (Blueprint $table) {
-            $table->index(['user_id', 'group_id']);
+            $table->index('user_id');
+            $table->index('group_id');
         });
     }
 
@@ -42,11 +44,13 @@ class UpdateStatamicAuthTables extends Migration
         });
 
         Schema::table('role_user', function (Blueprint $table) {
-            $table->dropIndex(['user_id', 'role_id']);
+            $table->dropIndex('user_id');
+            $table->dropIndex('role_id');
         });
 
         Schema::table('group_user', function (Blueprint $table) {
-            $table->dropIndex(['user_id', 'group_id']);
+            $table->dropIndex('user_id');
+            $table->dropIndex('group_id');
         });
     }
 }

@@ -15,6 +15,8 @@ class UpdateNotificationsTableForStatamic extends Migration
     {
         Schema::table('notifications', function (Blueprint $table) {
             $table->string('notifiable_id')->change();
+
+            $table->index('read_at');
         });
     }
 
@@ -27,6 +29,8 @@ class UpdateNotificationsTableForStatamic extends Migration
     {
         Schema::table('notifications', function (Blueprint $table) {
             $table->unsignedBigInteger('notifiable_id')->change();
+
+            $table->dropIndex('read_at');
         });
     }
 }
