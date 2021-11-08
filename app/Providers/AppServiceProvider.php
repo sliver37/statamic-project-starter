@@ -26,10 +26,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->ensureMigrations();
         $this->bootTelescope();
 
         // Statamic::script('app', 'cp');
         // Statamic::style('app', 'cp');
+    }
+
+    protected function ensureMigrations()
+    {
+        if (! Schema::hasTable('cache')) {
+            Artisan::call('migrate', [
+                '--force' => true,
+                '--path' => '/database/migrations/2021_07_02_001939_create_cache_table.php',
+            ]);
+        }
     }
 
     protected function bootTelescope()

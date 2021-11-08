@@ -1,4 +1,8 @@
-# admin:
-#   title: Administrator
-#   permissions:
-#     - super
+telescope_manager:
+  title: 'Telescope Manager'
+  permissions:
+    - 'access laravel telescope'
+horizon_manager:
+  title: 'Horizon Manager'
+  permissions:
+    - 'access laravel horizon'

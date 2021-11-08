@@ -5,20 +5,25 @@
     "require": {
         "php": "^8.0",
         "doctrine/dbal": "^3.1",
-        "edalzell/blade-directives": "^3.3",
+        "edalzell/blade-directives": "^3.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "handmadeweb/buildamic": "dev-main",
+        "handmadeweb/frosty": "^1.1",
         "handmadeweb/statamic-cloudflare": "^1.0",
+        "handmadeweb/statamic-laravel-packages": "^1.0",
         "laravel/framework": "^8.0",
         "laravel/horizon": "^5.7",
         "laravel/telescope": "^4.5",
         "laravel/tinker": "^2.0",
         "orchestra/testbench": "^6.0",
-        "statamic/cms": "^3.1.0"
+        "predis/predis": "^1.1",
+        "statamic/cms": "^3.2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
+        "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.3.6",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.8",
@@ -56,6 +61,11 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "ide-helper": [
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:models --nowrite",
+            "@php artisan ide-helper:meta"
+        ],
         "post-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan storage:link"
@@ -65,7 +75,8 @@
         ],
         "post-update-cmd": [
             "@php artisan horizon:publish --ansi",
-            "@php artisan telescope:publish --ansi"
+            "@php artisan telescope:publish --ansi",
+            "@composer ide-helper"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

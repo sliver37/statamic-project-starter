@@ -7,9 +7,11 @@
         <meta name="csrf-token" content="{{ $csrf_token }}" />
         <title>{{ $title ?? $site->name() }}</title>
         
+        @stack('pre-styles')
+
         <link rel="stylesheet" href="{{ mix('css/tailwind.css') }}">
 
-        @stack('styles')
+        @stack('post-styles')
     </head>
     <body class="bg-gray-100 font-sans leading-normal text-grey-800">
         <div id="app" class="mx-auto px-2 h-screen flex items-center justify-center">
@@ -19,8 +21,12 @@
                 @yield('template_content')
             @endisset
         </div>
-        <script src="{{ mix('js/site.js') }}"></script>
 
-        @stack('scripts')
+        @stack('pre-scripts')
+
+        <script src="{{ mix('js/site.js') }}"></script>
+        @frostyScripts
+        
+        @stack('post-scripts')
     </body>
 </html>
