@@ -61,6 +61,13 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "create-env": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "project-install": [
+            "@php artisan storage:link",
+            "@php artisan migrate"
+        ],
         "ide-helper": [
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:models --nowrite",

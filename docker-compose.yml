@@ -1,7 +1,7 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-    laravel.test:
+    statamic:
         build:
             context: ./docker/8.0
             dockerfile: Dockerfile
@@ -17,11 +17,11 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - sail
+            - statamic
         depends_on:
             - mariadb
             - redis
-            - blackfire
+            # - blackfire
     mariadb:
         image: 'mariadb:10.6'
         ports:
@@ -35,7 +35,7 @@ services:
         volumes:
             - './docker/volumes/mariadb:/var/lib/mysql'
         networks:
-            - sail
+            - statamic
         healthcheck:
           test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
           retries: 3
@@ -47,22 +47,22 @@ services:
         volumes:
             - './docker/volumes/redis:/data'
         networks:
-            - sail
+            - statamic
         healthcheck:
           test: ["CMD", "redis-cli", "ping"]
           retries: 3
           timeout: 5s
-    blackfire:
-        image: blackfire/blackfire:2
-        ports: ["8307"]
-        environment:
-            # Exposes BLACKFIRE_* environment variables from the host
-            BLACKFIRE_SERVER_ID: '${BLACKFIRE_SERVER_ID}'
-            BLACKFIRE_SERVER_TOKEN: '${BLACKFIRE_SERVER_TOKEN}'
-            BLACKFIRE_CLIENT_ID: '${BLACKFIRE_CLIENT_ID}'
-            BLACKFIRE_CLIENT_TOKEN: '${BLACKFIRE_CLIENT_TOKEN}'
-        networks:
-            - sail
+    # blackfire:
+    #     image: blackfire/blackfire:2
+    #     ports: ["8307"]
+    #     environment:
+    #         # Exposes BLACKFIRE_* environment variables from the host
+    #         BLACKFIRE_SERVER_ID: '${BLACKFIRE_SERVER_ID}'
+    #         BLACKFIRE_SERVER_TOKEN: '${BLACKFIRE_SERVER_TOKEN}'
+    #         BLACKFIRE_CLIENT_ID: '${BLACKFIRE_CLIENT_ID}'
+    #         BLACKFIRE_CLIENT_TOKEN: '${BLACKFIRE_CLIENT_TOKEN}'
+    #     networks:
+    #         - statamic
 networks:
-    sail:
+    statamic:
         driver: bridge
