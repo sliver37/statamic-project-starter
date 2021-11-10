@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCacheTableAddIndexExpiration extends Migration
+class CreateHospitalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class UpdateCacheTableAddIndexExpiration extends Migration
      */
     public function up()
     {
-        Schema::table('cache', function (Blueprint $table) {
-            $table->index('expiration');
+        Schema::create('hospitals', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +30,6 @@ class UpdateCacheTableAddIndexExpiration extends Migration
      */
     public function down()
     {
-        Schema::table('cache', function (Blueprint $table) {
-            $table->dropIndex('expiration');
-        });
+        Schema::dropIfExists('hospitals');
     }
 }

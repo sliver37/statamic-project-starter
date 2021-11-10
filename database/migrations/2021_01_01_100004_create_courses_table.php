@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateSessionsTableForStatamic extends Migration
+class CreateCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class UpdateSessionsTableForStatamic extends Migration
      */
     public function up()
     {
-        Schema::table('sessions', function (Blueprint $table) {
-            $table->string('user_id')->nullable()->change();
+        Schema::create('courses', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('educator');
+
+            $table->string('title');
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +31,6 @@ class UpdateSessionsTableForStatamic extends Migration
      */
     public function down()
     {
-        Schema::table('sessions', function (Blueprint $table) {
-            $table->foreignId('user_id')->nullable()->change();
-        });
+        Schema::dropIfExists('courses');
     }
 }

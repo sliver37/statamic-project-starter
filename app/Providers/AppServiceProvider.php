@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         if (! Schema::hasTable('cache')) {
             Artisan::call('migrate', [
                 '--force' => true,
-                '--path' => '/database/migrations/2021_07_02_001939_create_cache_table.php',
+                '--path' => '/database/migrations/2021_01_01_000001_create_cache_table.php',
             ]);
         }
     }
