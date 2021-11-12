@@ -19,7 +19,7 @@ class CreateBookingsTable extends Migration
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
 
             $table->foreign('attendee_id')->references('id')->on('users')->onDelete('cascade');
         });

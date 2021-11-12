@@ -28,7 +28,7 @@ class CreateEducatorsTable extends Migration
             // $table->string('country');
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

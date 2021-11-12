@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('title');
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

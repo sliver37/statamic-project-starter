@@ -19,7 +19,7 @@ class CreateHospitalsTable extends Migration
             $table->string('email')->unique();
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

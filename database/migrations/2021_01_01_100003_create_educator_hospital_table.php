@@ -19,7 +19,7 @@ class CreateEducatorHospitalTable extends Migration
             $table->foreignId('hospital_id')->constrained()->onDelete('cascade');
 
             // $table->timestamps();
-            // $table->softDeletes();
+            // $table->softDeletes()->index();
         });
     }
 

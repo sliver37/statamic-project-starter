@@ -22,7 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->text('notes')->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 
