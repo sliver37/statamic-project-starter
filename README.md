@@ -27,3 +27,23 @@ Then you will likely need to create a user account.
 ```shell
 php please make:user
 ```
+
+# MAMP
+If you are using MAMP to provide your database, you may need to update the host from `localhost` to `127.0.0.1`
+```env
+DB_HOST=127.0.0.1
+```
+
+# Docker/Sail
+It is also possible to run this via docker/sail.
+Edit the env to
+```env
+DB_HOST=mariadb
+DB_PORT=3309
+```
+And
+```env
+REDIS_PORT=6380
+```
+
+Then run `sail up`
