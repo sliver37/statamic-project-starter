@@ -21,9 +21,9 @@ Then run the below commands.
 composer install && composer install-project
 ```
 
-This should install all php deps and then run artisan storage:link and artisan migrate.
+This should install all composer packages and then run artisan storage:link and artisan migrate.
 
-Then you will probable need to create a user account.
+Then you will likely need to create a user account.
 ```shell
 php please make:user
 ```
