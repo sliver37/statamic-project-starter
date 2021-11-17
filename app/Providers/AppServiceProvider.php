@@ -16,7 +16,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**
@@ -35,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
     protected function ensureMigrations()
     {
-        if (! Schema::hasTable('cache')) {
+        if (!Schema::hasTable('cache')) {
             Artisan::call('migrate', [
                 '--force' => true,
                 '--path' => '/database/migrations/2021_01_01_000001_create_cache_table.php',
@@ -45,8 +44,8 @@ class AppServiceProvider extends ServiceProvider
 
     protected function bootTelescope()
     {
-        if (config('telescope.enabled') && Schema::hasTable('cache')) {
-            if (! Schema::hasTable('telescope_entries')) {
+        if (config('telescope.enabled')) {
+            if (!Schema::hasTable('telescope_entries')) {
                 Artisan::call('migrate', [
                     '--force' => true,
                     '--path' => '/vendor/laravel/telescope/database/migrations/2018_08_08_100000_create_telescope_entries_table.php',
