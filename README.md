@@ -18,7 +18,7 @@ DB_PASSWORD=
 
 Then run the below commands.
 ```shell
-composer install && composer install-project
+composer install && composer project-install
 ```
 
 This should install all composer packages and then run artisan storage:link and artisan migrate.
