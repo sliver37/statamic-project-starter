@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Statamic\Auth\Eloquent\User as StatamicUser;
+use Statamic\Facades\User as UserFacade;
 
 class User extends Authenticatable
 {
@@ -55,6 +55,16 @@ class User extends Authenticatable
 
     public function toStatamicUser()
     {
-        return StatamicUser::fromModel($this);
+        return UserFacade::find($this->id);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->fullName();
+    }
+
+    public function fullName()
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }
