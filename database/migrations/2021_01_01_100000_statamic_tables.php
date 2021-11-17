@@ -48,10 +48,6 @@ class StatamicTables extends Migration
         Schema::table('cache', function (Blueprint $table) {
             $table->index('expiration');
         });
-
-        Schema::table('failed_jobs', function (Blueprint $table) {
-            $table->index('queue');
-        });
     }
 
     /**
@@ -84,10 +80,6 @@ class StatamicTables extends Migration
 
         Schema::table('cache', function (Blueprint $table) {
             $table->dropIndex('expiration');
-        });
-
-        Schema::table('failed_jobs', function (Blueprint $table) {
-            $table->dropIndex('queue');
         });
     }
 }
