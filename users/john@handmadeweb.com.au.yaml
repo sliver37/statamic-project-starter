@@ -1,0 +1,9 @@
+first_name: John
+last_name: Pieters
+super: true
+id: 37013ff3-f23e-424f-9e6c-c8b8608b3079
+password_hash: $2y$10$/4S4sUIM9SIMY2ZfWhVaDOuU4MSXPaDbKxeolO4BQGYp26G.0vxK2
+preferences:
+  collections:
+    pages:
+      after_save: continue_editing

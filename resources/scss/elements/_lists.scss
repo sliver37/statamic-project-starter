@@ -1,0 +1,113 @@
+ul,
+ol {
+    margin: 0 0 1.5em 3em;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 1rem 0 2rem;
+}
+
+ol {
+    list-style: decimal;
+}
+
+li > ul,
+li > ol {
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 0;
+}
+
+.icon-list {
+    img {
+        width: 2em;
+        object-fit: contain;
+    }
+}
+
+// Custom LI Styles
+.buildamic-set ul,
+.buildamic-field ul,
+.accordion__content ul,
+ul.list-disc {
+    list-style: none !important;
+}
+
+.buildamic-blurb ul li,
+.buildamic-text ul li,
+.accordion__content ul li,
+.article-content ul li,
+.list-disc li {
+    padding-left: 2.6em;
+    position: relative;
+    margin: 0.2em 0;
+    &::before {
+        content: "\25CF";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        position: absolute;
+        font-size: clamp(1em, 1.4em, 1.6rem);
+        top: 0;
+        left: 1rem;
+        color: $color__tertiary;
+    }
+}
+
+.bmcb-text ol,
+.bmcb-blurb ol,
+.entry-content ol {
+    list-style: none;
+    counter-reset: ol-counter;
+    margin: 0;
+    padding: 0;
+    li {
+        counter-increment: ol-counter;
+        line-height: 1.5;
+        padding-left: 4rem;
+        position: relative;
+        &::before {
+            font-family: $font__heading;
+            letter-spacing: 0.2em;
+            content: counter(ol-counter) ". ";
+            color: $color__secondary;
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+    li + li {
+        margin-top: 2rem;
+    }
+}
+
+.custom-counter {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.custom-counter li {
+    counter-increment: step-counter;
+    @apply my-8 flex items-center pl-16 relative;
+}
+
+.custom-counter li::before {
+    content: counter(step-counter);
+    @apply mr-2 absolute text-xl text-secondary left-0 bg-tertiary font-bold p-2 rounded-full w-10 h-10 flex items-center justify-center;
+}

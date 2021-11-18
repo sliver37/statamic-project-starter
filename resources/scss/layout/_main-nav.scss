@@ -1,0 +1,67 @@
+$tab-radius: 0.8rem 0.8rem 0 0;
+$mobileMenuWidth: 200px;
+
+// Mobile nav drawer
+#mobile-nav {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  background: #444;
+  overflow-y: auto;
+  transition: transform 0.3s;
+  padding: 6rem 3rem;
+
+  // Mobile nav drawer is always off to the right
+  transform: translateX(100%);
+
+  .nav-item {
+    @include fontSize(16);
+    text-transform: lowercase;
+  }
+
+  a {
+    color: white;
+  }
+}
+
+body.--mobile-menu-open #mobile-nav {
+  // When menu is open, slide nav drawer into view
+  transform: translateX(0);
+}
+
+.nav__main_nav {
+  > .nav-items {
+    --nav-spacing: 1rem;
+  }
+  @include media-breakpoint-up(lg) {
+    > .nav-items {
+      --nav-spacing: 0.4rem;
+      > .nav-item {
+        background: #3d2549;
+        border-radius: $tab-radius;
+        padding: 0.4em 0.4em 0;
+        @include fontSize(18);
+        a {
+          display: block;
+          font-weight: normal;
+          color: $color__tertiary;
+          padding: 1em 2.4em 0.5em;
+          text-transform: lowercase;
+          border-radius: 0.5rem 0.5rem 0 0;
+          border: 3px dashed rgba(#270e36, 0.8);
+          border-bottom: 0;
+        }
+        &--current,
+        &--ancestor {
+          background: $color__tertiary;
+          a {
+            color: $color__text-main;
+            border-color: rgba(#270e36, 0.1);
+          }
+        }
+      }
+    }
+  }
+}

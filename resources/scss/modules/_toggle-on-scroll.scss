@@ -1,0 +1,11 @@
+.scroll-down,
+.scroll-up {
+  transition: transform 0.2s ease-in-out;
+}
+
+.scroll-down {
+  transform: translateY(-100%);
+  @include media-breakpoint-up(lg) {
+    transform: none;
+  }
+}

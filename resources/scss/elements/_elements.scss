@@ -1,0 +1,45 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-block-start: 4rem;
+}
+
+*,
+*::before,
+*::after {
+    /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+    box-sizing: inherit;
+}
+
+body {
+    background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+    font-size: $font__body-size;
+    line-height: $font__line-height-body;
+}
+
+pre {
+    font-size: 1em !important;
+}
+
+hr {
+    @apply h-0 my-4 border-t-2 border-dashed border-tertiary;
+}
+
+@import "lists";
+
+img {
+    max-width: 100%;
+    height: 100%; /* Make sure images are scaled correctly. */
+    object-fit: cover; /* Adhere to container width. */
+}
+
+figure {
+    margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+blockquote {
+    font-style: italic;
+}
+
+// @import "tables";
+// @import "buttons";

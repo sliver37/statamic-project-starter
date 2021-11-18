@@ -1,0 +1,22 @@
+$tab-radius: 1rem 1rem 0 0;
+
+.nav__footer_nav {
+    > .nav-items {
+        --nav-spacing: 0.8rem;
+        @include media-breakpoint-up(lg) {
+            --nav-spacing: 2rem;
+        }
+        text-transform: lowercase;
+        > .nav-item {
+            a {
+                color: $color__tertiary;
+                @include fontSize(18);
+            }
+            &--current {
+                a {
+                    color: $color__text-main;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,107 @@
+@use "sass:math";
+
+$spacing: 24px;
+$plus-size: 16px;
+$plus-thickness: 2px;
+$speed: 300ms;
+$radius: 3px;
+$easing: ease-in-out;
+$gray-dark: #546e7a;
+$gray: #e4e1e1;
+$gray-light: #eaeaea;
+
+.accordions {
+    @apply flex flex-col;
+    [class*="__header"] {
+        display: flex;
+        padding: math.div($spacing, 2) $spacing;
+        list-style: none; // Hide the marker (proper method)
+        border-radius: $radius;
+        outline: 0;
+        font-family: $font__heading;
+        @include fontSize(24);
+        cursor: pointer;
+        transition: all $speed $easing;
+
+        // Hide the marker in Webkit
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+    [class*="__content"] {
+        padding: 0.4rem 1rem 2rem;
+        padding-left: $spacing * 1.5;
+    }
+    .toggle-icon {
+        margin-left: auto;
+        transform-origin: center center;
+        transition: all 0.3s cubic-bezier(0.46, -0.41, 0.3, 1.52) 0.1s;
+        flex-shrink: 0;
+        cursor: pointer;
+        &.icon--plus {
+            color: $color__secondary;
+
+            transition: 0.2s ease-out all 0.2s;
+
+            width: 2.5rem;
+            height: 2.5rem;
+
+            line {
+                transform-origin: center;
+                transition: all 0.6s cubic-bezier(0.46, -0.41, 0.3, 1.52) 0.1s;
+            }
+
+            line:last-of-type {
+                transform: translate(0, 0) rotate(0);
+            }
+        }
+    }
+}
+
+.accordion {
+    --border-color: var(--color-tertiary);
+    border-top: 2px dashed var(--border-color);
+    overflow: hidden;
+    transition: height $speed $easing;
+    color: inherit;
+
+    &[open] {
+        [class*="__header"] {
+            > & {
+                border-radius: $global_radius $global_radius 0 0;
+            }
+        }
+
+        .icon--chevron-right {
+            transform: rotate(90deg) !important;
+        }
+
+        .icon--plus {
+            // color: $color__secondary;
+
+            line {
+                transition: all 0.6s cubic-bezier(0.46, -0.41, 0.3, 1.52) 0.1s;
+            }
+            line:first-of-type {
+                transform: translate(0, 0) rotate(180deg);
+            }
+
+            line:last-of-type {
+                transform: translate(0, 0) rotate(90deg);
+            }
+        }
+    }
+}
+
+.bg-tertiary .accordion {
+    --border-color: #e8e1c9;
+}
+
+ul .accordions {
+    [class*="__header"],
+    .form-input__content {
+        padding: 0.5rem 0;
+        background: none;
+        border: 0 !important;
+    }
+}

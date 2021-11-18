@@ -1,0 +1,47 @@
+.btn,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  @apply inline-block p-2 text-lg text-current rounded lowercase;
+  &:not(.has-icon-after)::after {
+    @apply hidden;
+  }
+  &:visited,
+  &:active,
+  &:focus {
+    &,
+    & span {
+      @apply text-current;
+    }
+  }
+  &:hover {
+    @apply text-current;
+  }
+  span {
+    @apply border-dashed border-2 block py-1 rounded px-10 border-primary-dark text-lg;
+  }
+}
+
+.btn > a {
+  @apply text-current;
+}
+
+.btn--primary {
+  @apply bg-primary text-white;
+}
+
+.btn--secondary {
+  @apply bg-secondary;
+}
+
+.btn--tertiary {
+  @apply bg-tertiary text-textmain;
+}
+
+.btn--unstyled {
+  @apply p-0 text-textmain;
+  span {
+    @apply border-0 p-0 text-lg;
+  }
+}

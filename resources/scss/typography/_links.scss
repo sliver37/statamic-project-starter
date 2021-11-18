@@ -1,0 +1,31 @@
+a {
+    transition: $global_transition;
+    color: $color__link;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color__link-hover;
+    }
+
+    &:visited {
+        color: $color__link-visited;
+    }
+
+    &:focus {
+        outline: thin dotted;
+    }
+
+    &:hover,
+    &:active {
+        outline: 0;
+    }
+}
+
+.page-content,
+.article-content {
+    a {
+        @apply text-secondary;
+    }
+}

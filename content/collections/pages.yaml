@@ -1,4 +1,4 @@
 title: Pages
 structure:
   root: true
-route: '{parent_uri}/{slug}'
+route: "{parent_uri}/{slug}"

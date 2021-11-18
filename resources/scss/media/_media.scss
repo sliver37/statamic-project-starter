@@ -1,0 +1,55 @@
+img,
+svg {
+    max-width: 100%;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+    max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+    display: inline-block;
+}
+
+/* Background images in the left quarter */
+.bg-image-quarter-left {
+    background-size: 0 !important;
+    background-position: top left;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(xl) {
+        background-size: auto 75% !important;
+    }
+    @include media-breakpoint-up(1400px) {
+        background-position: calc(50% - 330px) top;
+    }
+}
+
+.attachment-full-width {
+    max-height: 440px;
+    object-fit: cover;
+}
+
+img.alignleft {
+    float: left;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+img.alignright {
+    float: right;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+img.alignnone {
+    padding: 2rem 0;
+}
+
+// Remove extra margin from P tags wrapping images
+p > img {
+    margin-bottom: -1.5rem;
+}

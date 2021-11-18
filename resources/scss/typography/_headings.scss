@@ -1,0 +1,58 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font__heading;
+    color: $color__text-headings;
+    font-weight: $heading__font-weight;
+    clear: both;
+    line-height: $heading__line-height;
+    margin: 0;
+    margin-bottom: 0.2em;
+    strong {
+        text-transform: uppercase;
+        color: $color__secondary;
+    }
+}
+
+.header-callout-text {
+    font-size: 8.5rem;
+    line-height: 8rem;
+    color: $color__primary;
+}
+
+h1 {
+    @include fontSize(50);
+}
+
+h2 {
+    @include fontSize(30);
+    margin-bottom: 0.4em;
+}
+
+h3 {
+    @include fontSize(24, 22);
+    margin-bottom: 1em;
+}
+
+h4 {
+    @include fontSize(20);
+    margin-bottom: 0.5em;
+}
+
+.header-font h3,
+.header-font h4,
+.header-font h5 {
+    font-family: $font__heading;
+}
+
+h1 span,
+h2 span,
+h3 span,
+h4 span {
+    @include media-breakpoint-up(lg) {
+        display: block;
+    }
+}

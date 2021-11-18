@@ -1,0 +1,20 @@
+.main-header {
+    position: relative;
+    background: $color__primary;
+}
+
+.site-logo {
+    position: relative;
+    img {
+        width: 19rem;
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
+}
+
+.nav-wrapper.nav-wrapper__main_nav {
+    @include media-breakpoint-up(lg) {
+        --nav-spacing: 1.2em;
+    }
+}

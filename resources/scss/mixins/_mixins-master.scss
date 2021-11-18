@@ -1,0 +1,111 @@
+@use "sass:math";
+// Button sizes
+@mixin button-size($padding-y, $padding-x, $font-size) {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    &:hover {
+        padding: $padding-y $padding-x;
+    }
+}
+
+@mixin fontSize($size, $min: 18) {
+    // If a size less than default min is passed, use that as the new min
+    @if $size < $min {
+        $smallSize: $size;
+    } @else {
+        // Oterhwise calculate a 40% reduction (typically a good size down to mobile).
+        $smallSize: ($size - ($size * 0.4));
+
+        // If it's smaller than either 14px or the min we passed in explicitly, use min
+        @if $smallSize < $min {
+            $smallSize: $min;
+        }
+    }
+
+    $calcSize: $size * 0.625;
+    $smallSize: $min * 0.625;
+
+    // Fallback
+    font-size: ($size * 1px);
+
+    $clampMin: math.div($smallSize, 10) * 1rem;
+    $clampMed: math.div($size, 10) * 1vw;
+    $clampMax: math.div($calcSize, 10) * 1rem;
+
+    font-size: clamp(#{$clampMin}, #{$clampMed}, #{$clampMax});
+}
+
+// Clearfix
+@mixin clearfix() {
+    content: "";
+    display: table;
+    table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+    clear: both;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+    width: map-get($columns, $numberColumns) -
+        (($columns__margin * ($numberColumns - 1)) / $numberColumns);
+}
+
+// Equal-Width grid-column generator
+@mixin grid-cols($numberColumns: 6) {
+    grid-template-columns: repeat($numberColumns, 1fr);
+}
+
+@mixin ActivityCircle($dir) {
+    @if $dir == "top" {
+        top: 0;
+        transform: translateY(-80%);
+        display: flex;
+        align-items: flex-end;
+        padding: 0 0 1.2rem;
+    } @else {
+        bottom: 0;
+        transform: translateY(80%);
+        padding: 1.2rem 0 0;
+    }
+    left: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    content: attr(data-category);
+    width: 15rem;
+    max-width: 80%;
+    height: calc(15rem - 1.4rem);
+    display: flex;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+@mixin dashedInnerBorder() {
+    --inner-border-padding-x: 2%;
+    --inner-border-padding-y: 2%;
+    position: relative;
+    &::before {
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        pointer-events: none;
+        bottom: 0;
+        margin: auto;
+        width: calc(100% - var(--inner-border-padding-x));
+        height: calc(100% - var(--inner-border-padding-y));
+        border: 2px dashed hsl(46, 52%, 80%);
+        @apply rounded-lg;
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+@import "breakpoints";

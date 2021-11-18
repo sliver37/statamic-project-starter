@@ -1,0 +1,23 @@
+.terms__box {
+    .term {
+        .term-inner {
+            .term-icon {
+                color: $color__tertiary;
+                transition: background 0.2s linear;
+                content: "";
+                width: 8rem;
+                height: 8rem;
+                padding: 2rem;
+                border-radius: 50%;
+                background-color: $color__primary;
+                margin-bottom: 2rem;
+            }
+            &:hover {
+                .term-icon {
+                    color: $color__secondary;
+                    background-color: $color__tertiary;
+                }
+            }
+        }
+    }
+}

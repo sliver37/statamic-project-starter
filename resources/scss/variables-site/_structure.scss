@@ -1,0 +1,16 @@
+$containerWidth: 1024px;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: $containerWidth,
+    xxl: 1536px,
+) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-rfs: true !default;
+$enable-negative-margins: false !default;

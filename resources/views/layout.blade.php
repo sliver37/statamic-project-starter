@@ -1,32 +1,25 @@
-<!doctype html>
-<html lang="{{ $site->shortLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ $csrf_token }}" />
-        <title>{{ $title ?? $site->name() }}</title>
-        
-        @stack('pre-styles')
+@include('template-parts/head')
 
-        <link rel="stylesheet" href="{{ mix('css/tailwind.css') }}">
+    @include('template-parts/header')
 
-        @stack('post-styles')
-    </head>
-    <body class="bg-gray-100 font-sans leading-normal text-grey-800">
-        <div id="app" class="mx-auto px-2 h-screen flex items-center justify-center">
+        @if(isset($protected) && optional($protected)->value() && Auth::guest())
+            <div class="buildamic-section">
+                <div class="container">
+                    <div class="buildamic-row">
+                        <div class="buildamic-column col col-12">
+                            <x-login-form redirect="{{ url($url) }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
             @isset($template_content)
                 {!! $template_content !!}
             @else
                 @yield('template_content')
             @endisset
-        </div>
+        @endif
 
-        @stack('pre-scripts')
+    @include('template-parts/footer')
 
-        <script src="{{ mix('js/site.js') }}"></script>
-        @frostyScripts
-        
-        @stack('post-scripts')
-    </body>
-</html>
+@include('template-parts/foot')
