@@ -1,7 +1,12 @@
 <?php
 
-return [
+$links = [];
 
+if ('local' === env('APP_ENV', 'production')) {
+    $links[public_path('vendor/buildamic')] = base_path('vendor/handmadeweb/buildamic/public');
+}
+
+return [
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
@@ -42,7 +47,6 @@ return [
     */
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -72,7 +76,6 @@ return [
             'url' => '/assets',
             'visibility' => 'public',
         ],
-
     ],
 
     /*
@@ -86,8 +89,7 @@ return [
     |
     */
 
-    'links' => [
+    'links' => array_merge([
         public_path('storage') => storage_path('app/public'),
-    ],
-
+    ], $links),
 ];
