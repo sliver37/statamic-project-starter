@@ -1,8 +1,11 @@
 /node_modules
+/public/css
+/public/js
 /public/hot
 /public/storage
 /public/vendor/statamic
 /public/vendor/buildamic
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /docker/volumes/*
