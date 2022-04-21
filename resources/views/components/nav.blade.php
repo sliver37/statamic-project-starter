@@ -2,16 +2,17 @@
     ${$handle . "_list"} = [];
 @endphp
 
-@nav($handle, ['include_home' => $includeHome])
-    @php
-        array_push(${$handle . "_list"}, $item);
-    @endphp
-@endnav
-
-<v-nav :items="{{ collect(${$handle . "_list"})->toJson() }}"
-    handle="{{ $handle }}"
-    @if($isMain) to_mobile_menu @endif
-    @if($includeHome) include @endif
-    @if($icons) :icons="{{ $icons }}" @endif
-    @if($hasToggle) has_toggle @endif
-    @if($alwaysMobile) always_mobile @endif />
+<div id="{{ $handle }}" class="nav-wrapper">
+    @if($hasToggle)
+        <v-hamburger></v-hamburger>
+    @endif
+    @if($teleMobile) <tele-mobile :order="{{ $mobileOrder }}"> @endif
+        <nav class="nav nav__{{ $handle }}">
+            <ul class="nav-items {{ $gap }}">
+                @nav($handle, ['include_home' => $includeHome])
+                    <x-nav-item :item="$item" />
+                @endnav
+            </ul>
+        </nav>
+    @if($teleMobile) </tele-mobile> @endif
+</div>

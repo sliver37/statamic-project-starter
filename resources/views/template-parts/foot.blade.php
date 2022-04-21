@@ -1,6 +1,7 @@
 
         </div> <!-- End $app -->
 
+
         @stack('pre-scripts')
 
         <script src="{{ mix('js/site.js') }}"></script>

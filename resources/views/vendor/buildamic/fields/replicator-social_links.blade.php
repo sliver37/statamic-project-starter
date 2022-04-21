@@ -4,7 +4,7 @@
 
 <ul class="social-links flex gap-4 m-0">
     @foreach($field->value() as $social_link)
-        <li><a href="{{ $social_link['url'] }}"><v-icon class="w-8 h-8" name="{{ $social_link['platform'] }}"></v-icon></a></li>
+        <li><a style="color: {{ $social_link['color'] ?? '' }};" href="{{ $social_link['url'] }}"><i class="w-8 h-8 fab fa-{{ modify($social_link['platform'])->lowercase() }}"></i></a></li>
     @endforeach
 </ul>
 

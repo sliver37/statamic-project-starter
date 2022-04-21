@@ -18,7 +18,7 @@ $gray-light: #eaeaea;
         list-style: none; // Hide the marker (proper method)
         border-radius: $radius;
         outline: 0;
-        font-family: $font__heading;
+        font-family: var(--font-headings);
         @include fontSize(24);
         cursor: pointer;
         transition: all $speed $easing;
@@ -60,7 +60,6 @@ $gray-light: #eaeaea;
 
 .accordion {
     --border-color: var(--color-tertiary);
-    border-top: 2px dashed var(--border-color);
     overflow: hidden;
     transition: height $speed $easing;
     color: inherit;

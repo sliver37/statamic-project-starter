@@ -1,62 +1,68 @@
-// This is all you.
 import { createApp } from "vue";
-
-// We can parse markdown with the v-md directive
-import VueMarkdown from './directives/Markdown'
-
-// This will trigger a callback if we have clicked outside of the element v-click-outside is on
-import ClickOutside from './directives/ClickOutside'
-
-// Whenever this element exists on page (or on load), it will scroll to that element
-import ScrollTo from './directives/ScrollTo'
-
-// The custom accordion class for all of the accordion components in use by theme and buildamic
-// import accordions from './accordion'
-
-// Make the header hide/show based on scroll direction (mobile)
-import ToggleOnScroll from './directives/ToggleOnScroll.js';
-
-// Find any links inside the text and URLify them
-import URLifyText from './directives/URLifyText.js';
-
-// This is for implementing modals, toasts, or info toggles
-// import Popper from "vue3-popper";
-
-// Lightweight scroll animation library
-// import sal from 'sal.js';
-// import 'sal.js/dist/sal.css';
-
-// require('./functions/globals');
-
-// import 'eva-icons/style/eva-icons.css'
-
-// Glob and register all of the components
-const filesRecursive = require.context('./components', true, /\.vue$/i)
 
 const app = createApp({})
 
-app.directive('md', VueMarkdown)
-app.directive('click-outside', ClickOutside)
-app.directive('scroll-to', ScrollTo)
+// Google Map Component
+import VueGoogleMaps from '@fawmi/vue-google-maps'
+app.use(VueGoogleMaps, {
+    load: {
+        key: 'API_KEY_HERE',
+    },
+})
+
+// Accordions
+import Accordion from './components/accordions/accordion';
+import AccordionPanel from './components/accordions/accordion-panel';
+import AccordionPanelHeader from './components/accordions/accordion-panel-header';
+import AccordionPanelContent from './components/accordions/accordion-panel-content';
+app.component('accordion', Accordion);
+app.component('accordion-panel', AccordionPanel);
+app.component('accordion-panel-header', AccordionPanelHeader);
+app.component('accordion-panel-content', AccordionPanelContent);
+
+// Tabs
+import HmwTabs from './components/tabs/hmw-tabs';
+import HmwTabsHeaderTabs from './components/tabs/hmw-tabs-header-tabs';
+import HmwTabsContentPanels from './components/tabs/hmw-tabs-content-panels';
+import HmwTabHeader from './components/tabs/hmw-tab-header';
+import HmwTabContent from './components/tabs/hmw-tab-content';
+app.component('hmw-tabs', HmwTabs);
+app.component('hmw-tabs-header-tabs', HmwTabsHeaderTabs);
+app.component('hmw-tabs-content-panels', HmwTabsContentPanels);
+app.component('hmw-tab-header', HmwTabHeader);
+app.component('hmw-tab-content', HmwTabContent);
+
+// Youtube Iframe API
+import YoutubeIframeAPI from "./components/videos/YoutubeIframeAPI";
+app.component('youtube', YoutubeIframeAPI);
+
+// Make the header hide/show based on scroll direction (mobile)
+import ToggleOnScroll from './directives/ToggleOnScroll.js';
 app.directive('toggle-on-scroll', ToggleOnScroll)
-app.directive('urlify-text', URLifyText)
 
-// app.config.compilerOptions.isCustomElement = tag => tag.startsWith('x-')
+// Laravel SVG Vue
+// import SvgVue from 'svg-vue3';
+// app.use(SvgVue);
 
-// The registration part of the glob
+// Glob and register all of the components
+const filesRecursive = require.context('./components', true, /\.vue$/i)
 filesRecursive.keys().map(key => {
     let name = key.split('/').pop().split('.')[0];
     app.component(name, filesRecursive(key).default)
 })
 
-// app.component('Popper', Popper)
+// Social share icons
+import VueSocialSharing from 'vue-social-sharing'
+app.use(VueSocialSharing);
 
 app.mount("#app")
 
-// window.addEventListener('load', () => {
-//     accordions();
-//     sal({
-//       threshold: .1
-//     });
-// })
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
+
+window.addEventListener('load', () => {
+    const lightbox = GLightbox({
+        selector: ".glightbox"
+    });
+})
 

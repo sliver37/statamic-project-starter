@@ -1,0 +1,30 @@
+title: 'Taxonomy Filters'
+fields:
+  -
+    handle: filter_fields
+    field:
+      collapse: false
+      sets:
+        filter:
+          display: Filter
+          fields:
+            -
+              handle: taxonomy_to_filter_by
+              field:
+                max_items: 1
+                mode: default
+                display: 'Taxonomy to filter by'
+                type: taxonomies
+                icon: taxonomy
+                listable: hidden
+                instructions_position: above
+            -
+              handle: taxonomy_style
+              field: taxonomy_style.taxonomy_style
+              config:
+                display: 'Taxonomy Style'
+      display: 'Filter Fields'
+      type: replicator
+      icon: replicator
+      listable: hidden
+      instructions_position: above

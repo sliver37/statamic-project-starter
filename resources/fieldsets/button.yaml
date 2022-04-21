@@ -1,0 +1,72 @@
+title: Button
+fields:
+  -
+    handle: text
+    field:
+      input_type: text
+      antlers: false
+      display: Text
+      type: text
+      icon: text
+      listable: hidden
+  -
+    handle: url
+    field:
+      input_type: text
+      antlers: false
+      display: URL
+      type: text
+      icon: text
+      listable: hidden
+  -
+    handle: style
+    field:
+      options:
+        primary: Primary
+        secondary: Secondary
+        tertiary: Tertiary
+        unstyled: Unstyled
+      multiple: false
+      clearable: true
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      display: Style
+      type: select
+      icon: select
+      listable: hidden
+  -
+    handle: icon
+    field:
+      mode: list
+      container: assets
+      folder: icons
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      display: Icon
+      type: assets
+      icon: assets
+      listable: hidden
+      validate:
+        - 'max:1'
+      max_files: 1
+  -
+    handle: disable_icon
+    field:
+      default: false
+      display: 'Disable Icon'
+      type: toggle
+      icon: toggle
+      listable: hidden
+  -
+    handle: class
+    field:
+      input_type: text
+      antlers: false
+      display: Class
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above

@@ -1,0 +1,105 @@
+title: Title
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      antlers: false
+      display: Title
+      type: text
+      icon: text
+      listable: hidden
+  -
+    handle: title_level
+    field:
+      options:
+        h1: h1
+        h2: h2
+        h3: h3
+        h4: h4
+        h5: h5
+      display: 'Title Level'
+      type: button_group
+      icon: button_group
+      listable: hidden
+      default: h3
+  -
+    handle: title_weight
+    field:
+      options:
+        font-light: Light
+        font-normal: Normal
+        font-semibold: Semi-Bold
+        font-bold: Bold
+        font-heavy: Heavy
+      display: 'Title Weight'
+      type: button_group
+      icon: button_group
+      listable: hidden
+      instructions_position: above
+  -
+    handle: leading
+    field:
+      options:
+        leading-3: 0.75rem
+        leading-4: 1rem
+        leading-5: 1.25rem
+        leading-6: 1.5rem
+        leading-7: 1.75rem
+        leading-8: 2rem
+        leading-9: 2.25rem
+        leading-10: 2.5rem
+        leading-12: 3rem
+      display: Leading
+      type: button_group
+      icon: button_group
+      listable: hidden
+      instructions_position: above
+  -
+    handle: title_size
+    field:
+      options:
+        none: N/A
+        text-xs: XS
+        text-sm: SM
+        text-base: Base
+        text-lg: Large
+        text-xl: XL
+        text-2xl: 2XL
+        text-3xl: 3XL
+        text-4xl: 4XL
+        text-5xl: 5XL
+        text-6xl: 6XL
+      multiple: false
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      display: 'Title Size'
+      type: select
+      icon: select
+      listable: hidden
+      instructions_position: above
+  -
+    handle: title_color
+    field:
+      options:
+        text-primary: Primary
+        text-secondary: Secondary
+        text-tertiary: Tertiary
+        text-quaternary: Quaternary
+        text-quinary: Quinary
+        text-white: White
+        text-black: Black
+      multiple: false
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      display: 'Title Color'
+      type: select
+      icon: select
+      listable: hidden
+      instructions_position: above

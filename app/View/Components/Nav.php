@@ -7,6 +7,9 @@ use Illuminate\View\Component;
 class Nav extends Component
 {
     public $handle;
+    public $teleMobile;
+    public $mobileOrder;
+    public $gap;
     public $isMain;
     public $hasToggle;
     public $alwaysMobile;
@@ -18,9 +21,12 @@ class Nav extends Component
      *
      * @return void
      */
-    public function __construct($handle, $isMain = false, $hasToggle = false, $alwaysMobile = false, $icons = null, $includeHome = true)
+    public function __construct($handle, $gap = 'gap-4', $isMain = false, $teleMobile = false, $mobileOrder = 0, $hasToggle = false, $alwaysMobile = false, $icons = null, $includeHome = true)
     {
         $this->handle = $handle;
+        $this->teleMobile = $teleMobile;
+        $this->mobileOrder = (int) $mobileOrder;
+        $this->gap = $gap;
         $this->isMain = (bool) json_decode($isMain);
         $this->hasToggle = (bool) json_decode($hasToggle);
         $this->alwaysMobile = (bool) json_decode($alwaysMobile);

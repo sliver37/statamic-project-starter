@@ -1,15 +1,18 @@
 @php
     $text = $data['text'];
-    $icon = $data['icon']->value() ?? null;
-    $icon_disabled = $data['disable_icon']->value();
+    $icon = method_exists( $data['icon'], 'value' ) ? $data['icon']->value() : $data['icon'];
+    $icon_disabled = optional($data['disable_icon'] ?? null)->value();
+    $button_style = optional($data['style'] ?? null)?->value()?->value() ?? null;
 @endphp
 
 @isset($text)
-    <a class="btn btn--{{ $data['style']->value()->value() ?? 'unstyled' }}" href="{{ $data['url'] ?? '#' }}">
-        <span class="flex items-center">
+    <a class="btn text-center {{ $data['class'] ?? "" }} {{ $button_style ? "btn--{$button_style}" : null }}" href="{{ $data['url'] ?? '#' }}">
+        <span class="flex items-center justify-center">
             {{ $text }}
             @if(isset($icon) && !$icon_disabled)
-                <v-icon class="ml-2" name="{{ $icon->get('filename') }}"></v-icon>
+                @glide($icon)
+                    <img src="{{ $url }}">
+                @endglide
             @endisset
         </span>
     </a>

@@ -52,4 +52,3 @@
               </p>
             </div>
           </noscript>
-            <svg-sprite></svg-sprite> <!-- Site-wide svg sprite for icons etc (must be inside #app) -->

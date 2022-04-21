@@ -1,0 +1,23 @@
+title: Cards
+fields:
+  -
+    handle: card
+    field:
+      options:
+        product-card: 'Product Card'
+        review-card: 'Review Card'
+        project-card: 'Project Card'
+        entry-card: 'Entry Card'
+        article-card: 'Article Card'
+      multiple: false
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      display: Card
+      type: select
+      icon: select
+      instructions: 'Which card style to use for each slide (e.g product card, review card)'
+      listable: hidden
+      instructions_position: above

@@ -3,16 +3,65 @@ sections:
   main:
     display: Main
     fields:
-      - handle: title
+      -
+        handle: title
         field:
           type: text
           required: true
           validate:
             - required
-      - handle: buildamic
+      -
+        handle: buildamic
         field:
           fields:
-            - handle: heading
+            -
+              handle: text
+              field:
+                input_type: text
+                antlers: true
+                display: Text
+                type: text
+                icon: text
+                listable: hidden
+                instructions_position: above
+            -
+              handle: code
+              field:
+                theme: material
+                mode: htmlmixed
+                indent_type: tabs
+                indent_size: 4
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                display: Code
+                type: code
+                icon: code
+                listable: hidden
+            -
+              handle: image
+              field:
+                mode: grid
+                container: assets
+                restrict: false
+                allow_uploads: true
+                display: Image
+                type: assets
+                icon: assets
+                listable: hidden
+            -
+              handle: slider
+              field:
+                mode: default
+                collections:
+                  - sliders
+                display: Slider
+                type: entries
+                icon: entries
+                listable: hidden
+                max_items: 1
+            -
+              handle: heading
               field:
                 always_show_set_button: false
                 buttons:
@@ -40,100 +89,285 @@ sections:
                 icon: bard
                 listable: hidden
                 container: assets
-            - handle: term_box
+            -
+              handle: search_form
               field:
-                mode: default
-                taxonomies:
-                  - developmental_level
-                display: "Term Box"
-                type: terms
-                icon: taxonomy
-                listable: hidden
-            - handle: search_form
-              field:
-                html: "<x-search-form></x-search-form>"
-                display: "Search Form"
+                html: '<x-search-form></x-search-form>'
+                display: 'Search Form'
                 type: html
                 icon: html
                 listable: hidden
-            - handle: collections
+            -
+              handle: collections
               field:
                 mode: default
                 display: Collections
                 type: collections
                 icon: collections
                 listable: hidden
-            - handle: testimonial_slider
-              field:
-                html: "<vue-slider-testimonials></vue-slider-testimonials>"
-                display: "Testimonial Slider"
-                type: html
-                icon: html
-                listable: hidden
-            - handle: accordion
+            -
+              handle: accordion
               field:
                 collapse: false
                 sets:
                   accordion_item:
-                    display: "Accordion Item"
+                    display: 'Accordion Item'
                     fields:
-
+                      -
+                        handle: title
+                        field:
+                          input_type: text
+                          antlers: false
+                          display: Title
+                          type: text
+                          icon: text
+                          listable: hidden
+                      -
+                        handle: content
+                        field:
+                          always_show_set_button: false
+                          buttons:
+                            - h2
+                            - h3
+                            - h4
+                            - h5
+                            - bold
+                            - italic
+                            - unorderedlist
+                            - orderedlist
+                            - removeformat
+                            - quote
+                            - anchor
+                            - image
+                            - table
+                          container: assets
+                          save_html: false
+                          toolbar_mode: fixed
+                          link_noopener: false
+                          link_noreferrer: false
+                          target_blank: false
+                          reading_time: false
+                          fullscreen: true
+                          allow_source: true
+                          enable_input_rules: true
+                          enable_paste_rules: true
+                          display: Content
+                          type: bard
+                          icon: bard
+                          listable: hidden
+                display: Accordion
+                type: replicator
+                icon: replicator
+                listable: hidden
+            -
+              handle: tabs
+              field:
+                collapse: false
+                sets:
+                  accordion_item:
+                    display: 'Tab Item'
+                    fields:
+                      -
+                        handle: header
+                        field:
+                          input_type: text
+                          antlers: false
+                          display: Header
+                          type: text
+                          icon: text
+                          listable: hidden
+                      -
+                        handle: content
+                        field:
+                          always_show_set_button: false
+                          buttons:
+                            - h2
+                            - h3
+                            - h4
+                            - h5
+                            - bold
+                            - italic
+                            - unorderedlist
+                            - orderedlist
+                            - removeformat
+                            - quote
+                            - anchor
+                            - image
+                            - table
+                          container: assets
+                          save_html: false
+                          toolbar_mode: fixed
+                          link_noopener: false
+                          link_noreferrer: false
+                          target_blank: false
+                          reading_time: false
+                          fullscreen: true
+                          allow_source: true
+                          enable_input_rules: true
+                          enable_paste_rules: true
+                          display: Content
+                          type: bard
+                          icon: bard
+                          listable: hidden
+                display: Tabs
+                type: replicator
+                icon: replicator
+                listable: hidden
+                instructions_position: above
+            -
+              handle: rich_text
+              field:
+                always_show_set_button: false
+                buttons:
+                  - h1
+                  - h2
+                  - h3
+                  - h4
+                  - h5
+                  - bold
+                  - italic
+                  - underline
+                  - unorderedlist
+                  - orderedlist
+                  - removeformat
+                  - quote
+                  - anchor
+                  - image
+                  - table
+                container: assets
+                save_html: false
+                toolbar_mode: fixed
+                link_noopener: false
+                link_noreferrer: false
+                target_blank: false
+                reading_time: false
+                fullscreen: true
+                allow_source: true
+                enable_input_rules: true
+                enable_paste_rules: true
+                display: 'Rich Text'
+                type: bard
+                icon: bard
+                listable: hidden
+            -
+              handle: social_links
+              field:
+                collapse: false
+                sets:
+                  social_link:
+                    display: 'Social Link'
+                    fields:
+                      -
+                        handle: platform
+                        field:
+                          input_type: text
+                          antlers: false
+                          display: Platform
+                          type: text
+                          icon: text
+                          listable: hidden
+                          instructions_position: above
+                      -
+                        handle: url
+                        field:
+                          display: URL
+                          type: link
+                          icon: link
+                          listable: hidden
+                      -
+                        handle: color
+                        field:
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HSLA
+                          color_modes:
+                            - rgba
+                            - hsla
+                          display: Color
+                          type: color
+                          icon: color
+                          listable: hidden
+                          instructions_position: above
+                display: 'Social Links'
+                type: replicator
+                icon: replicator
+                listable: hidden
+                instructions_position: above
+            -
+              handle: video
+              field:
+                display: Video
+                type: video
+                icon: video
+                listable: hidden
+                instructions_position: above
+            -
+              handle: hr
+              field:
+                display: HR
+                type: section
+                icon: section
+                instructions: 'This is a line-separator'
+                listable: hidden
+                instructions_position: above
+            -
+              import: buttons
+            -
+              handle: pull_quote
+              field:
+                antlers: false
+                display: 'Pull quote'
+                type: textarea
+                icon: textarea
+                listable: hidden
+                instructions_position: above
+            -
+              handle: simple_map
+              field:
+                placeholder: 'Start typing your address'
+                featureTypes:
+                  - address
+                language:
+                  - en
+                display: 'Simple Map'
+                type: address
+                icon: pin
+                listable: hidden
+                instructions_position: above
           sets:
             blurbs:
               display: Blurbs
               fields:
-                - handle: title
-                  field:
-                    input_type: text
-                    antlers: false
-                    display: Title
-                    type: text
-                    icon: text
-                    listable: hidden
-                - handle: title_level
-                  field:
-                    options:
-                      h1: h1
-                      h2: h2
-                      h3: h3
-                      h4: h4
-                      h5: h5
-                    display: "Title Level"
-                    type: button_group
-                    icon: button_group
-                    listable: hidden
-                    default: h3
-                - handle: title_color
-                  field:
-                    options:
-                      primary: null
-                      secondary: null
-                      tertiary: null
-                      quaternary: null
-                      quinary: null
-                    multiple: false
-                    clearable: false
-                    searchable: true
-                    taggable: false
-                    push_tags: false
-                    cast_booleans: false
-                    display: "Title Color"
-                    type: select
-                    icon: select
-                    listable: hidden
-                - handle: image
+                -
+                  import: title
+                -
+                  handle: image
                   field:
                     mode: list
                     container: assets
-                    folder: /
+                    folder: icons
                     restrict: false
                     allow_uploads: true
                     show_filename: true
-                    display: image
+                    display: Image
                     type: assets
                     icon: assets
                     listable: hidden
-                - handle: content
+                    instructions_position: above
+                -
+                  handle: image_align
+                  field:
+                    options:
+                      justify-start: Left
+                      justify-center: Center
+                      justify-end: Right
+                    display: 'Image Align'
+                    type: button_group
+                    icon: button_group
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: content
                   field:
                     always_show_set_button: false
                     buttons:
@@ -166,76 +400,111 @@ sections:
                     type: bard
                     icon: bard
                     listable: hidden
-                - handle: buttons
+                -
+                  import: buttons
+                -
+                  handle: show_advanced_options
                   field:
-                    collapse: false
-                    sets:
-                      button:
-                        display: button
-                        fields:
-                          - handle: text
-                            field:
-                              input_type: text
-                              antlers: false
-                              display: Text
-                              type: text
-                              icon: text
-                              listable: hidden
-                          - handle: url
-                            field:
-                              input_type: text
-                              antlers: false
-                              display: URL
-                              type: text
-                              icon: text
-                              listable: hidden
-                          - handle: style
-                            field:
-                              options:
-                                primary: Primary
-                                secondary: Secondary
-                                tertiary: Tertiary
-                                unstyled: Unstyled
-                              multiple: false
-                              clearable: true
-                              searchable: true
-                              taggable: false
-                              push_tags: false
-                              cast_booleans: false
-                              display: Style
-                              type: select
-                              icon: select
-                              listable: hidden
-                          - handle: icon
-                            field:
-                              mode: list
-                              container: assets
-                              folder: icons
-                              restrict: false
-                              allow_uploads: true
-                              show_filename: true
-                              display: Icon
-                              type: assets
-                              icon: assets
-                              listable: hidden
-                              validate:
-                                - "max:1"
-                              max_files: 1
-                          - handle: disable_icon
-                            field:
-                              default: false
-                              display: "Disable Icon"
-                              type: toggle
-                              icon: toggle
-                              listable: hidden
-                    display: Buttons
-                    type: replicator
-                    icon: replicator
+                    default: false
+                    display: 'Show Advanced Options'
+                    type: toggle
+                    icon: toggle
                     listable: hidden
-            list_collections:
-              display: "List Collections"
+                    instructions_position: above
+                -
+                  handle: content_wrapper_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Content Wrapper Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                    if:
+                      show_advanced_options: 'equals true'
+                -
+                  handle: image_wrapper_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Image Wrapper Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      show_advanced_options: 'equals true'
+                -
+                  handle: image_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Image Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      show_advanced_options: 'equals true'
+                    default: 'mb-6 flex'
+                -
+                  handle: blurb_wrapper_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Blurb Wrapper Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      show_advanced_options: 'equals true'
+            heading:
+              display: Heading
               fields:
-                - handle: collection
+                -
+                  import: title
+                -
+                  import: buttons
+            collection_filter:
+              display: 'Collection Filter'
+              fields:
+                -
+                  import: title
+                -
+                  import: taxonomy_filters
+                -
+                  handle: collection
+                  field:
+                    max_items: 1
+                    mode: default
+                    display: Collection
+                    type: collections
+                    icon: collections
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: card
+                  field: card.card
+                -
+                  handle: columns
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Columns
+                    type: text
+                    icon: text
+                    instructions: 'The tailwind class for grid columns: e.g "grid-cols-3", "md:grid-cols-4"'
+                    listable: hidden
+                    instructions_position: above
+            list_collections:
+              display: 'List Collections'
+              fields:
+                -
+                  handle: collection
                   field:
                     mode: default
                     display: Collection
@@ -243,35 +512,65 @@ sections:
                     icon: collections
                     listable: hidden
                     max_items: 1
-                - handle: max_items
+                -
+                  handle: max_items
                   field:
-                    display: "Max Items"
+                    display: 'Max Items'
                     type: integer
                     icon: integer
                     listable: hidden
-                - handle: template
+                -
+                  handle: columns
                   field:
-                    options:
-                      activities-card: "Activity Card"
-                      articles-card: "Article Card"
-                    multiple: false
-                    clearable: false
-                    searchable: true
-                    taggable: false
-                    push_tags: false
-                    cast_booleans: false
-                    display: Template
-                    type: select
-                    icon: select
+                    input_type: text
+                    antlers: false
+                    default: 'md:grid-cols-3'
+                    display: Columns
+                    type: text
+                    icon: text
+                    instructions: 'Tailwind style column classes e.g grid-cols-3, md:grid-cols-2'
                     listable: hidden
-                - handle: related
+                    instructions_position: above
+                -
+                  handle: card
+                  field: card.card
+                  config:
+                    options:
+                      product-card: 'Product Card'
+                      review-card: 'Review Card'
+                      project-card: 'Project Card'
+                      article-card: 'Article Card'
+                -
+                  handle: child_entries
+                  field:
+                    default: false
+                    display: 'Child Entries'
+                    type: toggle
+                    icon: toggle
+                    instructions: 'List the children of the current collection'
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: related
                   field:
                     default: false
                     display: Related
                     type: toggle
                     icon: toggle
                     listable: hidden
-                - handle: taxonomy
+                -
+                  handle: included_entries
+                  field:
+                    mode: default
+                    create: true
+                    display: 'Included entries'
+                    type: entries
+                    icon: entries
+                    instructions: 'Choose exactly which ones appear, or leave blank to show the latest'
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: taxonomy
                   field:
                     mode: default
                     display: Taxonomy
@@ -279,10 +578,27 @@ sections:
                     icon: taxonomy
                     listable: hidden
                     max_items: 1
+                -
+                  handle: rules
+                  field:
+                    theme: material
+                    mode: htmlmixed
+                    mode_selectable: false
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Rules
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
             search_form:
-              display: "Search Form"
+              display: 'Search Form'
               fields:
-                - handle: before
+                -
+                  handle: before
                   field:
                     restrict: false
                     automatic_line_breaks: true
@@ -293,9 +609,10 @@ sections:
                     display: Before
                     type: markdown
                     icon: markdown
-                    instructions: "Anything you'd liked to appear before the search form"
+                    instructions: 'Anything you''d liked to appear before the search form'
                     listable: hidden
-                - handle: after
+                -
+                  handle: after
                   field:
                     restrict: false
                     automatic_line_breaks: true
@@ -306,9 +623,10 @@ sections:
                     display: After
                     type: markdown
                     icon: markdown
-                    instructions: "Anything you'd liked to appear after the search form"
+                    instructions: 'Anything you''d liked to appear after the search form'
                     listable: hidden
-                - handle: field_colour
+                -
+                  handle: field_colour
                   field:
                     options:
                       white: White
@@ -319,11 +637,12 @@ sections:
                     taggable: false
                     push_tags: false
                     cast_booleans: false
-                    display: "Field Colour"
+                    display: 'Field Colour'
                     type: select
                     icon: select
                     listable: hidden
-                - handle: action
+                -
+                  handle: action
                   field:
                     input_type: text
                     antlers: false
@@ -331,7 +650,8 @@ sections:
                     type: text
                     icon: text
                     listable: hidden
-                - handle: name
+                -
+                  handle: name
                   field:
                     input_type: text
                     antlers: false
@@ -342,47 +662,588 @@ sections:
             forms:
               display: Forms
               fields:
-                - handle: form
+                -
+                  import: title
+                -
+                  handle: form
                   field:
                     max_items: 1
                     display: Form
                     type: form
                     icon: form
                     listable: hidden
-                - handle: success_redirect
+                -
+                  handle: success_redirect
                   field:
                     mode: default
                     create: true
                     collections:
                       - pages
-                    display: "Success Redirect"
+                    display: 'Success Redirect'
                     type: entries
                     icon: entries
                     listable: hidden
                     max_items: 1
+                -
+                  handle: button_text
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Button Text'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: form_wrapper_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Form Wrapper Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: inputs_wrapper_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Inputs wrapper class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    instructions: 'These classes affect the layout of all fields (not including submit button)'
+                -
+                  handle: input_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Input Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: button_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Button Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: hide_labels
+                  field:
+                    default: false
+                    display: 'Hide Labels'
+                    type: toggle
+                    icon: toggle
+                    listable: hidden
+                    instructions_position: above
+            hero_box:
+              display: 'Hero Box'
+              fields:
+                -
+                  import: title
+                -
+                  handle: image
+                  field:
+                    mode: list
+                    container: assets
+                    folder: /
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    display: image
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                -
+                  handle: content
+                  field:
+                    always_show_set_button: false
+                    buttons:
+                      - h1
+                      - h2
+                      - h3
+                      - h4
+                      - h5
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - orderedlist
+                      - removeformat
+                      - quote
+                      - anchor
+                      - image
+                      - table
+                    container: assets
+                    save_html: false
+                    toolbar_mode: fixed
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    reading_time: false
+                    fullscreen: true
+                    allow_source: true
+                    enable_input_rules: true
+                    enable_paste_rules: true
+                    display: Content
+                    type: bard
+                    icon: bard
+                    listable: hidden
+                    instructions_position: above
+                -
+                  import: buttons
+                -
+                  handle: icon_list
+                  field:
+                    collapse: false
+                    sets:
+                      items:
+                        display: Items
+                        fields:
+                          -
+                            handle: icon
+                            field:
+                              mode: list
+                              restrict: false
+                              allow_uploads: true
+                              show_filename: true
+                              display: Icon
+                              type: assets
+                              icon: assets
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: line_awesome_class
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: 'LIne Awesome Class'
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: url
+                            field:
+                              collections:
+                                - pages
+                              display: URL
+                              type: link
+                              icon: link
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: text
+                            field:
+                              restrict: false
+                              automatic_line_breaks: true
+                              automatic_links: false
+                              escape_markup: false
+                              smartypants: false
+                              antlers: false
+                              display: Text
+                              type: markdown
+                              icon: markdown
+                              listable: hidden
+                              instructions_position: above
+                    display: 'Icon list'
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+            call_to_action:
+              display: 'Call to action'
+              fields:
+                -
+                  import: title
+                -
+                  handle: icon
+                  field:
+                    mode: list
+                    container: assets
+                    folder: icons
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    display: icon
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: content
+                  field:
+                    always_show_set_button: false
+                    buttons:
+                      - h1
+                      - h2
+                      - h3
+                      - h4
+                      - h5
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - orderedlist
+                      - removeformat
+                      - quote
+                      - anchor
+                      - image
+                      - table
+                    container: assets
+                    save_html: false
+                    toolbar_mode: fixed
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    reading_time: false
+                    fullscreen: true
+                    allow_source: true
+                    enable_input_rules: true
+                    enable_paste_rules: true
+                    display: Content
+                    type: bard
+                    icon: bard
+                    listable: hidden
+                -
+                  import: buttons
+            menu:
+              display: Menu
+              fields:
+                -
+                  handle: menu_handle
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Menu Handle'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: open_in_new_tab
+                  field:
+                    default: false
+                    display: 'Open In New Tab'
+                    type: toggle
+                    icon: toggle
+                    listable: hidden
+                    instructions_position: above
+            manual_review:
+              display: 'Manual Review'
+              fields:
+                -
+                  handle: review_text
+                  field:
+                    antlers: false
+                    display: 'Review Text'
+                    type: textarea
+                    icon: textarea
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: name
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Name
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: position
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Position
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+            single_entry:
+              display: 'Single Entry'
+              fields:
+                -
+                  import: title
+                -
+                  handle: entry
+                  field:
+                    mode: default
+                    create: true
+                    display: Entry
+                    type: entries
+                    icon: entries
+                    listable: hidden
+                    instructions_position: above
+                    max_items: 1
+                -
+                  handle: entry_title_level
+                  field:
+                    options:
+                      h1: h1
+                      h2: h2
+                      h3: h3
+                      h4: h4
+                      h5: h5
+                      a: a
+                      strong: strong
+                      p: p
+                    display: 'Entry Title Level'
+                    type: button_group
+                    icon: button_group
+                    listable: hidden
+                    default: h3
+                    instructions_position: above
+                -
+                  handle: hide_featured_image
+                  field:
+                    default: false
+                    display: 'Hide featured image'
+                    type: toggle
+                    icon: toggle
+                    listable: hidden
+                    instructions_position: above
+                -
+                  import: buttons
+            list_child_entries:
+              display: 'List Child Entries'
+              fields:
+                -
+                  handle: collection
+                  field:
+                    mode: default
+                    display: Collection
+                    type: collections
+                    icon: collections
+                    listable: hidden
+                    max_items: 1
+                -
+                  handle: max_items
+                  field:
+                    display: 'Max Items'
+                    type: integer
+                    icon: integer
+                    listable: hidden
+                -
+                  handle: columns
+                  field:
+                    input_type: text
+                    antlers: false
+                    default: 'md:grid-cols-3'
+                    display: Columns
+                    type: text
+                    icon: text
+                    instructions: 'Tailwind style column classes e.g grid-cols-3, md:grid-cols-2'
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: card
+                  field: card.card
+                -
+                  handle: included_entries
+                  field:
+                    mode: default
+                    create: true
+                    display: 'Included entries'
+                    type: entries
+                    icon: entries
+                    instructions: 'Choose exactly which ones appear, or leave blank to show the latest'
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: taxonomy
+                  field:
+                    mode: default
+                    display: Taxonomy
+                    type: taxonomies
+                    icon: taxonomy
+                    listable: hidden
+                    max_items: 1
+                -
+                  handle: rules
+                  field:
+                    theme: material
+                    mode: htmlmixed
+                    mode_selectable: false
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Rules
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+            gallery:
+              display: Gallery
+              fields:
+                -
+                  handle: images
+                  field:
+                    mode: list
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    display: Images
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: columns
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Columns
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    unless:
+                      gallery_slider: 'equals true'
+                -
+                  handle: image_class
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Image Class'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: gallery_slider
+                  field:
+                    default: false
+                    display: 'Gallery Slider'
+                    type: toggle
+                    icon: toggle
+                    instructions: 'Make this gallery look like a slider, instead of a grid'
+                    listable: hidden
+                    instructions_position: above
           display: Buildamic
           type: buildamic
           icon: buildamic
           listable: hidden
+          instructions_position: above
+          globals:
+            - buildamic_globals
+      -
+        handle: excerpt
+        field:
+          restrict: false
+          automatic_line_breaks: true
+          automatic_links: false
+          escape_markup: false
+          smartypants: false
+          antlers: false
+          display: Excerpt
+          type: markdown
+          icon: markdown
+          listable: hidden
+          instructions_position: above
+      -
+        handle: show_excerpt_in_header
+        field:
+          default: true
+          display: 'Show Excerpt in header'
+          type: toggle
+          icon: toggle
+          instructions: 'Adds the excerpt into the page header, just underneath the title'
+          listable: hidden
+          instructions_position: above
+      -
+        handle: enable_header_content_right
+        field:
+          default: false
+          display: 'Enable Header Content Right'
+          type: toggle
+          icon: toggle
+          listable: hidden
+          instructions_position: above
+      -
+        handle: header_content_right
+        field:
+          always_show_set_button: true
+          sets:
+            header_image:
+              display: 'Header Image'
+              fields:
+                -
+                  handle: header_image
+                  field:
+                    mode: list
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    display: 'Header Image'
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+                    max_files: 1
+          buttons:
+            - h2
+            - h3
+            - bold
+            - italic
+            - unorderedlist
+            - orderedlist
+            - removeformat
+            - quote
+            - anchor
+            - image
+            - table
+          save_html: false
+          toolbar_mode: fixed
+          link_noopener: false
+          link_noreferrer: false
+          target_blank: false
+          reading_time: false
+          fullscreen: true
+          allow_source: true
+          enable_input_rules: true
+          enable_paste_rules: true
+          antlers: false
+          display: 'Header Content Right'
+          type: bard
+          icon: bard
+          instructions: 'This will appear in the page header next to the excerpt (if enabled).'
+          listable: hidden
+          instructions_position: above
+          if:
+            enable_header_content_right: 'equals true'
+      -
+        import: taxonomy_filters
   sidebar:
     display: Sidebar
     fields:
-      - handle: slug
+      -
+        handle: slug
         field:
           type: slug
-          required: true
           localizable: true
           validate:
             - required
-            - "unique_entry_value:{collection},{id},{site}"
-      - handle: author
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: author
         field:
           type: users
           display: Author
           default: current
           localizable: true
           max_items: 1
-      - handle: parent
+      -
+        handle: parent
         field:
           type: entries
           collections:
@@ -390,28 +1251,32 @@ sections:
           max_items: 1
           listable: false
           localizable: true
-      - handle: protected
+      -
+        handle: protected
         field:
           default: false
           display: Protected
           type: toggle
           icon: toggle
-          instructions: "Select whether the user must be logged in to see this page"
+          instructions: 'Select whether the user must be logged in to see this page'
           listable: hidden
           instructions_position: above
-      - handle: template
+      -
+        handle: template
         field:
           type: template
           display: Template
           localizable: true
-      - handle: show_page_title
+      -
+        handle: show_page_title
         field:
           default: true
-          display: "Show Page Title"
+          display: 'Show Page Title'
           type: toggle
           icon: toggle
           listable: hidden
-      - handle: thumbnail
+      -
+        handle: thumbnail
         field:
           mode: grid
           container: assets
@@ -423,7 +1288,8 @@ sections:
           type: assets
           icon: assets
           listable: hidden
-      - handle: page_form
+      -
+        handle: page_form
         field:
           max_items: 1
           display: Form

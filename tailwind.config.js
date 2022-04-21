@@ -1,5 +1,6 @@
 module.exports = {
     mode: 'jit',
+    important: '#app',
     purge: {
         content: [
             './resources/**/*.antlers.html',

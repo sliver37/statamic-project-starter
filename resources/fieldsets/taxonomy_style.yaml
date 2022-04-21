@@ -1,0 +1,22 @@
+title: 'Taxonomy Style'
+fields:
+  -
+    handle: taxonomy_style
+    field:
+      options:
+        checkbox: Checkbox
+        radio: Radio
+        select: Select
+        range_slider: 'Range Slider'
+        nested: Nested
+      multiple: false
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      display: 'Taxonomy Style'
+      type: select
+      icon: select
+      listable: hidden
+      instructions_position: above

@@ -22,7 +22,7 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property int $super
  * @property string|null $avatar
- * @property string|null $preferences
+ * @property mixed|null $preferences
  * @property \Illuminate\Support\Carbon|null $last_login
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property \Illuminate\Support\Carbon|null $created_at

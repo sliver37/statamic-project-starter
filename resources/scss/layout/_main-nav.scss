@@ -1,67 +1,73 @@
-$tab-radius: 0.8rem 0.8rem 0 0;
-$mobileMenuWidth: 200px;
-
-// Mobile nav drawer
 #mobile-nav {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-  background: #444;
-  overflow-y: auto;
-  transition: transform 0.3s;
-  padding: 6rem 3rem;
+    @apply h-screen flex flex-col fixed top-0 gap-6 right-0 z-[1000] bg-gray-600 overflow-y-auto transition-transform py-24 px-12 w-80 translate-x-full;
 
-  // Mobile nav drawer is always off to the right
-  transform: translateX(100%);
+    .nav {
+        @apply block;
+    }
 
-  .nav-item {
-    @include fontSize(16);
-    text-transform: lowercase;
-  }
+    .nav-item {
+        @apply font-light;
+        @include fontSize(16, 16);
+    }
 
-  a {
-    color: white;
-  }
+    a:not(.btn) {
+        @apply text-white;
+    }
+}
+
+.nav-toggle:checked ~ * .nav {
+    @apply block translate-x-0;
 }
 
 body.--mobile-menu-open #mobile-nav {
-  // When menu is open, slide nav drawer into view
-  transform: translateX(0);
+    @apply translate-x-0;
 }
 
-.nav__main_nav {
-  > .nav-items {
-    --nav-spacing: 1rem;
-  }
-  @include media-breakpoint-up(lg) {
-    > .nav-items {
-      --nav-spacing: 0.4rem;
-      > .nav-item {
-        background: #3d2549;
-        border-radius: $tab-radius;
-        padding: 0.4em 0.4em 0;
-        @include fontSize(18);
-        a {
-          display: block;
-          font-weight: normal;
-          color: $color__tertiary;
-          padding: 1em 2.4em 0.5em;
-          text-transform: lowercase;
-          border-radius: 0.5rem 0.5rem 0 0;
-          border: 3px dashed rgba(#270e36, 0.8);
-          border-bottom: 0;
-        }
-        &--current,
-        &--ancestor {
-          background: $color__tertiary;
-          a {
-            color: $color__text-main;
-            border-color: rgba(#270e36, 0.1);
-          }
-        }
-      }
+// If no JS is enabled, then the nav becomes the mobile menu drawer
+.no-js .nav-wrapper {
+    .nav__primary_navigation {
+        @apply h-screen fixed top-0 right-0 z-[1000] bg-gray-600 overflow-y-auto transition-transform py-24 px-12 w-80 translate-x-full;
     }
-  }
+}
+
+.nav__primary_navigation {
+    a:not(.btn) {
+        @apply text-white;
+    }
+    > .nav-items {
+        --nav-spacing: 1rem;
+    }
+    @include media-breakpoint-up(lg) {
+        @apply bg-transparent static h-auto p-0;
+        > .nav-items {
+            --nav-spacing: 0.4rem;
+            > .nav-item {
+                @include fontSize(18);
+                a {
+                    @apply block font-normal text-black p-2;
+                }
+                > a {
+                    @apply p-0 py-8;
+                }
+
+                &__current,
+                &__ancestor {
+                    @apply underline;
+                }
+            }
+        }
+
+        .nav-items {
+            .nav-item {
+                @apply font-light;
+                @include fontSize(16, 16);
+                &__has-children {
+                    @apply text-secondary;
+                }
+                a {
+                    @apply text-white;
+                }
+            }
+        }
+    }
 }

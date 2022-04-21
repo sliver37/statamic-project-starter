@@ -6,23 +6,21 @@
     @endphp
 
     @isset($items)
-        <div class="accordions" data-istoggle>
+        <accordion>
             @foreach ($items as $item)
                 @php
-                    $title = $item['title']->value();
-                    $content = $item['content']->value();
+                    $title = isset($item['title']) ? $item['title']->value() : null;
+                    $content = isset($item['content']) ? $item['content']->value() : null;
                 @endphp
-                <div class="accordion">
-                    <div class="accordion__header items-center">
+                <accordion-panel>
+                    <accordion-panel-header>
                         {{ $title }}
-                        <animated-toggle-plus></animated-toggle-plus>
-                        {{-- <v-icon class="toggle-icon toggle-icon--chevron text-secondary" name="chevron-right"></v-icon> --}}
-                    </div>
-                    <div class="accordion__content">
+                    </accordion-panel-header>
+                    <accordion-panel-content>
                         {!! $content !!}
-                    </div>
-                </div>
+                    </accordion-panel-content>
+                </accordion-panel>
             @endforeach
-        </div>
+        </accordion>
     @endisset
 @overwrite

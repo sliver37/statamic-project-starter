@@ -1,73 +1,129 @@
+body:not(.no-js) .nav-toggle {
+    display: none;
+}
+
 .nav {
     --nav-spacing: 0.3em;
+    @apply hidden;
     &-items,
-    &-item--has-children {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: var(--nav-spacing);
-        margin: 0;
+    &-item__has-children {
+        @apply flex flex-col m-0;
     }
-    .sub-menu {
-        margin: 0;
+    &-item__has-children {
+        @apply relative;
+    }
+    .submenu {
+        @apply m-0;
         li {
-            padding-left: 1.2rem;
+            @apply pl-5;
         }
     }
     // Hide nav until toggled open
     &--has-toggle {
         .nav {
-            display: none;
+            @apply hidden;
         }
     }
 
     // Reveal Nav
     &--nav-open {
         .nav {
-            display: block;
+            @apply block;
         }
-    }
-}
-
-.nav-arrow {
-    left: 3.4em;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0.3em 0.3em 0 0.3em;
-    border-color: $color__primary transparent transparent transparent;
-    &-opened {
-        border-width: 0 0.3em 0.3em 0.3em;
-        border-color: transparent transparent $color__primary transparent;
     }
 }
 
 // Desktop styles
 @include media-breakpoint-up(lg) {
-    .nav-wrapper:not(.nav-wrapper--always-mobile) {
+    .nav-wrapper:not(.nav--always-mobile) {
         .nav {
-            display: block;
+            @apply block;
             &-items {
-                flex-direction: row;
-                .sub-menu {
+                @apply flex-row;
+            }
+            &-item {
+                &__has-children:hover {
+                    > .submenu {
+                        @apply flex;
+                    }
+                }
+                .submenu {
                     --direction: left;
-                    flex-direction: column;
-                    width: fit-content;
-                    white-space: nowrap;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    padding: 0 2rem;
-                    background: $color__tertiary;
+                    @apply rounded-b p-4 whitespace-nowrap flex-col m-0 hidden left-0 border-t bg-white gap-0 top-full absolute z-[1000]  min-w-[12rem] w-max;
                     li {
-                        padding: 0;
+                        @apply border-lightgray border-b py-2 px-0;
+                        &:last-child {
+                            @apply border-b-0;
+                        }
+                        a {
+                            @apply p-0;
+                        }
                     }
                     &--overflow {
-                        left: auto;
-                        right: 0;
+                        @apply left-auto right-0;
                     }
                 }
             }
         }
     }
 }
+
+// Top menu
+.nav__top_nav {
+    @apply text-sm;
+    .nav_icon {
+        @apply text-primary;
+    }
+
+    .nav {
+        &-item {
+            a {
+                @apply text-primary font-bold;
+            }
+        }
+    }
+}
+
+// .menu-top {
+//     .nav-items {
+//         @include media-breakpoint-up(lg) {
+//             @apply gap-0;
+//         }
+//     }
+//     .nav > .nav-items {
+//         > .nav-item {
+//             @include media-breakpoint-up(lg) {
+//                 border-right: 1px solid $color__lightgray;
+//                 &:last-child {
+//                     @apply border-r-0;
+//                     a {
+//                         @apply pr-0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .nav-item {
+//         .nav-item {
+//             &.nav-item--current {
+//                 > a > span.nav-item__title {
+//                     border-bottom: 2px solid $color__secondary;
+//                 }
+//             }
+//         }
+//         a {
+//             @include media-breakpoint-up(lg) {
+//                 @apply text-copycolor py-5 px-8;
+//                 &:focus {
+//                     @apply outline-none;
+//                 }
+//             }
+//         }
+//         &:last-child {
+//             @apply border-r-0;
+//             a {
+//                 @apply pr-0;
+//             }
+//         }
+//     }
+// }
