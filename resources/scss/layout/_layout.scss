@@ -16,64 +16,7 @@
     margin: 0 auto;
 }
 
-.container-grid {
-    display: grid;
-    grid-template-columns:
-        [full-start] minmax(0, 1fr) [main-start]
-        minmax(1em, math.div(1280, 2) * 1px) [middle] minmax(
-            1em,
-            math.div(1280, 2) * 1px
-        )
-        [main-end] minmax(0, 1fr) [full-end];
-
-    @each $name, $breakpoint in $grid-breakpoints {
-        // Don't generate XS, instead have no prefix eg .mb-2
-        @if $name == xs {
-            .main-start {
-                grid-column: main-start;
-            }
-
-            .main-end {
-                grid-column: main-end;
-            }
-
-            .full-start {
-                grid-column: full-start;
-            }
-
-            .full-end {
-                grid-column: full-end;
-            }
-
-            .middle {
-                grid-column: middle;
-            }
-        } @else {
-            @include media-breakpoint-up($name) {
-                .#{$name}\:main-start {
-                    grid-column: main-start;
-                }
-
-                .#{$name}\:main-end {
-                    grid-column: main-end;
-                }
-
-                .#{$name}\:full-start {
-                    grid-column: full-start;
-                }
-
-                .#{$name}\:full-end {
-                    grid-column: full-end;
-                }
-
-                .#{$name}\:middle {
-                    grid-column: middle;
-                }
-            }
-        }
-    }
-}
-
+// This is how you can hide stuff in vue until it's fully loaded
 [v-cloak] {
     display: none;
 }
